@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { User } = require("../models"); // Asegúrate de que la ruta sea correcta
+const { User } = require("../../domain/models");
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.post("/register", async (req, res) => {
 		const hashedPassword = await bcrypt.hash(password, 10);
 
 		// Crear el usuario
-		const user = await User.create({
+		await User.create({
 			email,
 			password: hashedPassword,
 			name,
@@ -56,10 +56,11 @@ router.post("/login", async (req, res) => {
 		// Generar el token JWT
 		const token = jwt.sign({ userId: user.id }, "SECRET_KEY", {
 			expiresIn: "1h",
-		}); // Reemplaza 'SECRET_KEY' con una clave secreta real
+		});
 
 		res.send({ token });
 	} catch (error) {
+		console.error(error); // Esto imprimirá el error en la consola
 		res.status(500).send("Error al iniciar sesión.");
 	}
 });

@@ -1,4 +1,4 @@
-const { verifyToken } = require("../helpers/authHelper");
+const { verifyToken } = require("../../application/helpers/authHelper");
 
 function authenticateJWT(req, res, next) {
 	const token = req.headers.authorization;

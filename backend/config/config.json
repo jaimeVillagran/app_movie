@@ -5,6 +5,7 @@
 		"database": "movie_database",
 		"host": "127.0.0.1",
 		"dialect": "mariadb",
+		"seedersPath": "./seeders",
 		"dialectOptions": {
 			"timezone": "Etc/GMT+0"
 		}
