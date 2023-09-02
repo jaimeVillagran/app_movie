@@ -1,11 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const authRoutes = require("./interface/routes/authRoutes");
 const userRoutes = require("./interface/routes/userRoutes");
-
+const errorHandler = require("./infrastructure/api/middleware/errorHandler");
 const app = express();
 
 // Middleware para parsear el cuerpo de las solicitudes JSON
@@ -29,10 +28,7 @@ app.use((req, res) => {
 });
 
 // Middleware para manejar errores generales
-app.use((err, req, res, next) => {
-	console.error(err.stack);
-	res.status(500).send("¡Algo salió mal!");
-});
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 
