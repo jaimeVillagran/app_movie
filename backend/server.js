@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const authRoutes = require("./interface/routes/authRoutes");
 const userRoutes = require("./interface/routes/userRoutes");
+const movieRoutes = require("./src/infrastructure/api/routes/movieRoutes");
 const errorHandler = require("./infrastructure/api/middleware/errorHandler");
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 // Rutas
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/movies", movieRoutes); // Añadimos las rutas de películas aquí
 
 // Ruta por defecto
 app.get("/", (req, res) => {

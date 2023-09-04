@@ -1,14 +1,16 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../sequelize"); // Asegúrate de ajustar la ruta a tu archivo de inicialización de Sequelize
+const { v4: uuidv4 } = require("uuid");
+const sequelize = require("../sequelize");
 
 class User extends Model {}
 
 User.init(
 	{
 		id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.UUID,
 			primaryKey: true,
-			autoIncrement: true,
+			defaultValue: uuidv4,
+			allowNull: false,
 		},
 		email: {
 			type: DataTypes.STRING,

@@ -1,42 +1,13 @@
-const express = require("express");
-const { body } = require("express-validator");
-const userController = require("../controllers/userController");
-const authMiddleware = require("../middleware/authMiddleware");
+// /infrastructure/api/routes/userRoutes.js
 
+const express = require("express");
+const userController = require("../controllers/userController");
 const router = express.Router();
 
-// Ruta para crear un nuevo usuario
-router.post(
-	"/register",
-	[
-		body("email").isEmail().withMessage("Ingrese un correo electrónico válido"),
-		body("password")
-			.isLength({ min: 6 })
-			.withMessage("La contraseña debe tener al menos 6 caracteres"),
-		body("name").not().isEmpty().withMessage("El nombre es obligatorio"),
-	],
-	userController.createUser
-);
-
-// Ruta para obtener el perfil del usuario
-router.get("/profile", authMiddleware, userController.getProfile);
-
-// Ruta para actualizar el perfil del usuario
-router.put(
-	"/profile",
-	authMiddleware,
-	[
-		body("email")
-			.optional()
-			.isEmail()
-			.withMessage("Ingrese un correo electrónico válido"),
-		body("name")
-			.optional()
-			.not()
-			.isEmpty()
-			.withMessage("El nombre es obligatorio"),
-	],
-	userController.updateProfile
-);
+router.get("/", userController.getAllUsers);
+router.get("/:id", userController.getUserById);
+router.post("/", userController.validateUser, userController.createUser);
+router.put("/:id", userController.validateUser, userController.updateUser);
+router.delete("/:id", userController.deleteUser);
 
 module.exports = router;
