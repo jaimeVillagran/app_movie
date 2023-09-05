@@ -1,3 +1,5 @@
+¡Por supuesto! Aquí tienes el texto formateado en Markdown:
+
 # Proyecto de Aplicación de Películas
 
 Este es un proyecto de una aplicación web de películas que incluye tanto el frontend como el backend. La aplicación permite a los usuarios autenticados gestionar películas, realizar operaciones CRUD y más.
