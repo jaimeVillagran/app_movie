@@ -1,0 +1,34 @@
+# Node.js
+node_modules/
+
+# Dependencias específicas de desarrollo
+/.pnp
+.pnp.js
+
+# Construcciones generadas
+/dist
+/build
+
+# Ambiente
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de caché y registro
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ficheros temporales
+*.swp
+*.lock

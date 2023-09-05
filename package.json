@@ -1,0 +1,39 @@
+{
+	"name": "app_movie",
+	"version": "1.0.0",
+	"description": "Proyecto de aplicación de películas",
+	"scripts": {
+		"start:backend": "node backend/infrastructure/api/index.js",
+		"start:frontend": "cd frontend && vite",
+		"dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+		"build:frontend": "cd frontend && vite build",
+		"lint:frontend": "cd frontend && eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+		"lint:backend": "cd backend && eslint . --ext js --report-unused-disable-directives --max-warnings 0"
+	},
+	"dependencies": {
+		"express": "4.18.2",
+		"jsonwebtoken": "9.0.2",
+		"bcrypt": "5.1.1",
+		"sequelize": "6.32.1",
+		"mariadb": "3.2.0",
+		"axios": "^1.5.0",
+		"@mui/material": "5.14.7",
+		"@mui/icons-material": "5.14.7",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-router-dom": "6.0.2"
+	},
+	"devDependencies": {
+		"eslint": "8.45.0",
+		"eslint-plugin-react": "7.32.2",
+		"eslint-plugin-react-hooks": "4.6.0",
+		"eslint-plugin-react-refresh": "0.4.3",
+		"concurrently": "7.0.0",
+		"nodemon": "3.0.1",
+		"@vitejs/plugin-react": "4.0.3",
+		"vite": "4.4.5"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	}
+}
